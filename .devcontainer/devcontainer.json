@@ -1,14 +1,27 @@
 {
-    "name": "STM32 Development Container",
+    "name": "STM32-Sensor-Hub-Env",
     "customizations": {
         "vscode": {
             "extensions": [
+                // إضافاتك الخاصة التي ظهرت في القائمة
+                "bmd.stm32-for-vscode",
+                "marus25.cortex-debug",
+                "mcu-debug.rtos-views",
+                "mcu-debug.memory-view",
+                "mcu-debug.peripheral-viewer",
+                "mcu-debug.debug-tracker-vscode",
+                "usernamehw.errorlens",
+                "kylinideteam.kylin-cpp-pack",
+                "kylinideteam.cmake-intellisence",
+                "kylinideteam.kylin-cmake-tools",
+                "chneau.resource-monitor",
+                "cschlosser.doxdocgen",
+                "niwciu.stm32-build-analyzer-enhanced",
+                "onik1999.stm32-cmake-helper",
+                
+                // إضافات "محرك النظام" الضرورية لتعمل الأدوات أعلاه
                 "ms-vscode.cpptools",
-                "marus25.rtos",
-                "ms-vscode.makefile-tools",
-                "webfreak.debug",
-                "jeff-hykin.better-cpp-syntax",
-                "yzhang.markdown-all-in-one"
+                "ms-vscode.makefile-tools"
             ]
         }
     }
