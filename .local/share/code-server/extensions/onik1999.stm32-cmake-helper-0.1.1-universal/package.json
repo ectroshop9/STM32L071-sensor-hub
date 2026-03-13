@@ -1,0 +1,35 @@
+{
+	"name": "stm32-cmake-helper",
+	"displayName": "STM32 CMake Helper",
+	"description": "Initialize STM32 CMake projects",
+	"version": "0.1.1",
+	"publisher": "Onik1999",
+	"repository": "https://github.com/Onik1999/STM32_helper_ext",
+	"engines": {
+		"vscode": "^1.80.0"
+	},
+	"extensionPack": [
+		"marus25.cortex-debug",
+		"llvm-vs-code-extensions.vscode-clangd"
+	],
+	"activationEvents": [
+		"stm32.initProject"
+	],
+	"categories": [
+		"Other"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "stm32.initProject",
+				"title": "STM32: Initialize Project"
+			}
+		]
+	},
+	"__metadata": {
+		"installedTimestamp": 1773359967212,
+		"targetPlatform": "universal",
+		"size": 15329
+	}
+}

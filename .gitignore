@@ -1,0 +1,29 @@
+# --- Build Outputs ---
+build/
+bin/
+obj/
+
+# --- Binary Files ---
+*.elf
+*.bin
+*.hex
+*.map
+*.o
+*.d
+*.su
+
+# --- IDE & Editor Settings ---
+
+.history/
+.project
+.cproject
+.settings/
+*.launch
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+
+# --- Logs & Temporaries ---
+*.log
+*.tmp

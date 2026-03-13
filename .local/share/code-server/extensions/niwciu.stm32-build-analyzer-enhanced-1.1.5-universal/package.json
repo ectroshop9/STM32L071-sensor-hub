@@ -1,0 +1,153 @@
+{
+	"name": "stm32-build-analyzer-enhanced",
+	"displayName": "STM32 Build Analyzer (Enhanced)",
+	"description": "STM32 Build Analyzer for VSCode - Fork of ATwice291/stm32-build-analyzer with additional features...",
+	"version": "1.1.5",
+	"publisher": "niwciu",
+	"license": "MIT",
+	"icon": "images/icon2.png",
+	"engines": {
+		"vscode": "^1.96.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/niwciu/stm32-build-analyzer.git"
+	},
+	"activationEvents": [],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"icon": {
+			"light": "images/icon2.png",
+			"dark": "images/icon2.png"
+		},
+		"commands": [
+			{
+				"command": "stm32BuildAnalyzerEnhanced.openTab",
+				"title": "STM32 Build Analyzer"
+			},
+			{
+				"command": "stm32BuildAnalyzerEnhanced.refresh",
+				"title": "STM32 Build Analyzer Refresh Paths"
+			},
+			{
+				"command": "stm32BuildAnalyzerEnhanced.refreshPaths",
+				"title": "STM32 Build Analyzer Change Build Folder"
+			},
+			{
+				"command": "stm32BuildAnalyzerEnhanced.addManualPair",
+				"title": "STM32 Build Analyzer Add Manual Build Pair"
+			}
+		],
+		"configuration": {
+			"title": "STM32 Build Analyzer (Enhanced)",
+			"properties": {
+				"stm32BuildAnalyzerEnhanced.mapFilePath": {
+					"type": "string",
+					"default": "",
+					"description": "Absolute path to the .map file (overrides automatic search)"
+				},
+				"stm32BuildAnalyzerEnhanced.elfFilePath": {
+					"type": "string",
+					"default": "",
+					"description": "Absolute path to the .elf file (overrides automatic search)"
+				},
+				"stm32BuildAnalyzerEnhanced.toolchainPath": {
+					"type": "string",
+					"default": "",
+					"description": "Absolute path to the ARM GNU Embedded toolchain binaries (directory containing arm-none-eabi-objdump, arm-none-eabi-nm, etc.). If set, the extension will use these tools instead of relying solely on PATH."
+				},
+				"stm32BuildAnalyzerEnhanced.debug": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable verbose logging for debugging purposes."
+				},
+				"stm32BuildAnalyzerEnhanced.manualBuildPairs": {
+					"type": "array",
+					"default": [],
+					"description": "Optional list of manual map/elf pairs to use when file names differ or outputs live outside standard build folders.",
+					"items": {
+						"type": "object",
+						"required": [
+							"folder",
+							"map",
+							"elf"
+						],
+						"properties": {
+							"label": {
+								"type": "string",
+								"description": "Display label for the manual pair."
+							},
+							"folder": {
+								"type": "string",
+								"description": "Build folder path (absolute or workspace-relative)."
+							},
+							"map": {
+								"type": "string",
+								"description": "Map file path (absolute or relative to the build folder)."
+							},
+							"elf": {
+								"type": "string",
+								"description": "ELF file path (absolute or relative to the build folder)."
+							}
+						}
+					}
+				}
+			}
+		},
+		"viewsContainers": {
+			"panel": [
+				{
+					"id": "buildAnalyzerEnhancedPanel",
+					"title": "STM32 Build Analyzer",
+					"icon": "images/icon.png"
+				}
+			]
+		},
+		"views": {
+			"buildAnalyzerEnhancedPanel": [
+				{
+					"id": "buildAnalyzerEnhanced",
+					"name": "STM32 Build Analyzer",
+					"type": "webview",
+					"icon": "images/icon.png"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"pretest": "npm run compile-tests && npm run compile && npm run lint",
+		"lint": "eslint src",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.10",
+		"@types/node": "20.x",
+		"@types/vscode": "^1.96.0",
+		"@typescript-eslint/eslint-plugin": "^8.17.0",
+		"@typescript-eslint/parser": "^8.17.0",
+		"@vscode/test-cli": "^0.0.10",
+		"@vscode/test-electron": "^2.4.1",
+		"eslint": "^9.16.0",
+		"ts-loader": "^9.5.1",
+		"typescript": "^5.7.2",
+		"webpack": "^5.95.0",
+		"webpack-cli": "^5.1.4"
+	},
+	"dependencies": {
+		"test": "^3.3.0"
+	},
+	"__metadata": {
+		"installedTimestamp": 1773359930870,
+		"targetPlatform": "universal",
+		"size": 235140
+	}
+}

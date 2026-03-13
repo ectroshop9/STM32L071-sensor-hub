@@ -1,0 +1,102 @@
+{
+	"name": "resource-monitor",
+	"displayName": "Resource Monitor",
+	"description": "A simple resource monitor.",
+	"version": "2.0.18",
+	"publisher": "chneau",
+	"license": "MIT",
+	"galleryBanner": {
+		"color": "#1E1E1E",
+		"theme": "dark"
+	},
+	"keywords": [
+		"performance",
+		"resource",
+		"resources",
+		"monitor",
+		"memory",
+		"cpu",
+		"io",
+		"network",
+		"disk",
+		"storage"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chneau/vscode-resource-monitor"
+	},
+	"icon": "images/icon.png",
+	"engines": {
+		"vscode": "^1.99.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/main.js",
+	"scripts": {
+		"build": "esbuild ./src/main.ts --outfile=out/main.js --bundle --external:vscode --platform=node --minify",
+		"watch": "bun run build --watch",
+		"upgrade": "bun update --latest; bun install --dev @types/vscode@1.99.0",
+		"check": "rm -rf out; deno fmt --use-tabs --quiet; oxlint --fix-dangerously --quiet; timeout 3s biome check --write --unsafe .",
+		"lint": "tsc --noEmit",
+		"bench": "hyperfine 'bun run benchmarks/multipleCalls.ts' 'bun run benchmarks/oneCall.ts'",
+		"publish": "bun run build && vsce publish; ovsx publish",
+		"all": "bun run upgrade; bun run check; bun run lint"
+	},
+	"dependencies": {
+		"pretty-bytes": "^7.1.0",
+		"systeminformation": "^5.27.11"
+	},
+	"devDependencies": {
+		"@types/node": "^24.10.1",
+		"@types/vscode": "1.99.0",
+		"@vscode/vsce": "^3.7.1",
+		"esbuild": "^0.27.0",
+		"typescript": "^5.9.3"
+	},
+	"contributes": {
+		"configuration": {
+			"title": "Resource Monitor",
+			"properties": {
+				"resource-monitor.cpu": {
+					"type": "number",
+					"default": 1,
+					"description": "Order of the CPU usage. 0 to hide."
+				},
+				"resource-monitor.memory": {
+					"type": "number",
+					"default": 2,
+					"description": "Order of the memory usage. 0 to hide."
+				},
+				"resource-monitor.network": {
+					"type": "number",
+					"default": 3,
+					"description": "Order of the network usage. 0 to hide."
+				},
+				"resource-monitor.file-system": {
+					"type": "number",
+					"default": 4,
+					"description": "Order of the file system usage. 0 to hide."
+				},
+				"resource-monitor.gpu": {
+					"type": "number",
+					"default": 0,
+					"description": "Order of the GPU usage. 0 to hide."
+				},
+				"resource-monitor.refresh-interval": {
+					"type": "number",
+					"default": 3000,
+					"description": "Refresh interval in milliseconds."
+				}
+			}
+		}
+	},
+	"__metadata": {
+		"installedTimestamp": 1773360405866,
+		"targetPlatform": "universal",
+		"size": 318140
+	}
+}

@@ -1,0 +1,92 @@
+# Configuration file for the STM32 for VSCode extension
+# Optimized for STM32L071CBT6 in Cloud Environment
+
+# The project name
+target: SmartHive_L0
+# Can be C or C++
+language: C
+
+optimization: Og
+
+# MCU settings - Core for STM32L071CBT6
+targetMCU: stm32l0
+cpu: cortex-m0plus
+fpu: 
+floatAbi: soft
+ldscript: STM32L071CBTX_FLASH.ld
+
+# Compiler definitions.
+cDefinitions: 
+  - USE_HAL_DRIVER
+  - STM32L071xx
+cxxDefinitions: []
+asDefinitions: []
+
+cDefinitionsFile:
+cxxDefinitionsFile:
+asDefinitionsFile:
+
+# Compiler flags - Added -mthumb and -mcpu to force ARM compilation
+cFlags: 
+  - -mcpu=cortex-m0plus
+  - -mthumb
+  - -Wall
+  - -fdata-sections
+  - -ffunction-sections
+  - -O0
+
+cxxFlags: 
+  - -fno-rtti
+  - -fno-exceptions
+
+assemblyFlags: 
+  - -Wall
+  - -fdata-sections
+  - -ffunction-sections
+
+linkerFlags: 
+  - -Wl,--print-memory-usage
+  - -mthumb
+  - -mcpu=cortex-m0plus
+
+# libraries to be included.
+libraries: 
+  - c
+  - m
+  - nosys
+
+# Library directories.
+libraryDirectories: []
+
+# Files or folders that will be excluded from compilation.
+excludes: 
+  - "**/Examples/**"
+  - "**/examples/**"
+  - "**/Example/**"
+  - "**/example/**"
+  - "**_template.*"
+
+# Include directories - Adjust these based on your folder structure
+includeDirectories: 
+  - Core/Inc
+  - Drivers/STM32L0xx_HAL_Driver/Inc
+  - Drivers/STM32L0xx_HAL_Driver/Inc/Legacy
+  - Drivers/CMSIS/Device/ST/STM32L0xx/Include
+  - Drivers/CMSIS/Include
+  - .
+
+# Source files - Add your main and HAL files
+sourceFiles: 
+  - Core/Src/*.c
+  - Drivers/STM32L0xx_HAL_Driver/Src/*.c
+  - "*.c"
+
+# Force the extension to use the correct toolchain in the cloud environment
+armToolchainPath: /usr/bin
+makePath: /usr/bin/make
+
+suppressMakefileWarning: false
+
+customMakefileRules: []
+
+makeFlags: []
