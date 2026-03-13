@@ -1,4 +1,3 @@
-# STM32L071-sensor-hub
 # STM32L071 Sensor Hub 🐝
 
 A professional, RTOS-based firmware for monitoring smart beehives using **STM32L071CBT6**.
