@@ -1,0 +1,15 @@
+{
+    "name": "STM32 Development Container",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "marus25.rtos",
+                "ms-vscode.makefile-tools",
+                "webfreak.debug",
+                "jeff-hykin.better-cpp-syntax",
+                "yzhang.markdown-all-in-one"
+            ]
+        }
+    }
+}
